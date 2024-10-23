@@ -47,7 +47,7 @@ loader.load('/spaceship.gltf', (gltf) => {
     spaceship.add(model);
     scene.add(spaceship);
     spaceship.position.set(0, 0, 0);
-    addRandomShips(10); // Add 5 random ships to the scene
+    addRandomShips(12); // Add 5 random ships to the scene
 });
 
 // Camera settings
