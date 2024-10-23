@@ -40,7 +40,7 @@ const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('/draco/'); // Adjust the path as needed
 loader.setDRACOLoader(dracoLoader);
 
-loader.load('/spaceship.gltf', (gltf) => {
+loader.load(`${process.env.PUBLIC_URL}/spaceship.gltf`, (gltf) => {
     spaceship = new THREE.Group(); // Parent group for the spaceship
     const model = gltf.scene;
     model.rotation.y = Math.PI; // Apply 180-degree rotation to the model
@@ -406,7 +406,7 @@ function checkShipSelection(event) {
 // Function to add random ships to the scene
 function addRandomShips(numShips) {
     for (let i = 0; i < numShips; i++) {
-        loader.load('/spaceship.gltf', (gltf) => {
+        loader.load(`${process.env.PUBLIC_URL}/spaceship.gltf`, (gltf) => {
             const otherShipGroup = new THREE.Group(); // Parent group for the other ship
             const otherShipModel = gltf.scene;
             otherShipModel.rotation.y = Math.PI; // Rotate 180 degrees
