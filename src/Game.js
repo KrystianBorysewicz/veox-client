@@ -406,7 +406,7 @@ function checkShipSelection(event) {
 // Function to add random ships to the scene
 function addRandomShips(numShips) {
     for (let i = 0; i < numShips; i++) {
-        loader.load('../assets/spaceship.gltf', (gltf) => {
+        loader.load('assets/spaceship.gltf', (gltf) => {
             const otherShipGroup = new THREE.Group(); // Parent group for the other ship
             const otherShipModel = gltf.scene;
             otherShipModel.rotation.y = Math.PI; // Rotate 180 degrees
