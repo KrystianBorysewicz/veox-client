@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
+/* src/App.css */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
+canvas {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.username {
+  position: absolute;
+  color: #e50000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-size: 14px;
   pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+  z-index: 5;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Styles for the draggable windows */
+.draggable-ui-window {
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  background-color: rgba(50, 50, 50, 0.8);
+  border: 1px solid #ccc;
+  color: #fff;
+  z-index: 10;
   display: flex;
   flex-direction: column;
+}
+
+.window-header {
+  background-color: #333;
+  padding: 5px;
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-content {
+  flex-grow: 1;
+  padding: 10px;
+}
+
+.minimize-button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.minimized-windows {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+}
+
+.minimized-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 24px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.window,
+.minimized-icon {
+  z-index: 10;
 }
