@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/veox-client/static/css/main.cade4e26.css",
-    "main.js": "/veox-client/static/js/main.a11c5cb4.js",
-    "index.html": "/veox-client/index.html",
-    "main.cade4e26.css.map": "/veox-client/static/css/main.cade4e26.css.map",
-    "main.a11c5cb4.js.map": "/veox-client/static/js/main.a11c5cb4.js.map"
+    "main.css": "/static/css/main.cade4e26.css",
+    "main.js": "/static/js/main.5b3b3789.js",
+    "index.html": "/index.html",
+    "main.cade4e26.css.map": "/static/css/main.cade4e26.css.map",
+    "main.5b3b3789.js.map": "/static/js/main.5b3b3789.js.map"
   },
   "entrypoints": [
     "static/css/main.cade4e26.css",
-    "static/js/main.a11c5cb4.js"
+    "static/js/main.5b3b3789.js"
   ]
 }
