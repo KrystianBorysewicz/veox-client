@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 canvas {
@@ -31,31 +32,154 @@ html {
   z-index: 5;
 }
 
+.own-username {
+  color: #fffffd;
+  z-index: 6;
+}
+
 /* Styles for the draggable windows */
-.draggable-ui-window {
+.ui-container {
   position: absolute;
-  width: 200px;
-  height: 150px;
-  background-color: rgba(50, 50, 50, 0.8);
-  border: 1px solid #ccc;
-  color: #fff;
+  user-select: none;
+  top: 50px; 
+  left: 50px;
+  border: 1px solid  #adb6de90;
+  display: flex;
+  border-radius: 1px;
+  background-color: #2c2d3290;
+  box-shadow:0 0 5px #adb6de;
+  flex-direction: column;
   z-index: 10;
+}
+.ui-container-header {
+  height: 23px;
+  display: flex;
+  color: white;
+  font-family: Arial;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 10px;
+  user-select: none;
+  background: linear-gradient(0deg, rgba(68,69,71,1) 0%, rgba(49,50,54,1) 56%, rgba(43,44,51,1) 56%, rgba(39,41,49,1) 100%);
+}
+.ui-container-header:hover {
+  background: linear-gradient(0deg, rgb(59, 64, 75) 0%, rgb(44, 47, 59) 56%, rgb(38, 39, 53) 56%, rgb(34, 37, 49) 100%);
+}
+.uic-header-icon {
+  height: 75%;
+}
+.uic-header-title {
+  margin-left: 8px;
+}
+.ui-container-body {
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  gap: 8px;
+}
+.uic-ship {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2px;
+  user-select: none;
+}
+.uic-ship-bar-container {
+  justify-content: center;
+  display: flex;
+  height: auto;
+  gap: 3px;
+  flex-direction: column;
+  width: 100%;
+}
+.uic-ship-bar-wrapper {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 3px;
+  width: 99%;
+  display: flex;
+  background-color: #5e5e5e;
+}
+.ui-ship-bar {
+  height: 100%;
+}
+#uic-ship-hp-bar {
+  display: flex;
+  box-sizing: border-box;
+  line-height: 5px;
+  background-color: #79b75a;
+  text-align: center;
+  color:#fff;
+}
+#uic-ship-shield-bar {
+  display: flex;
+  line-height: 22px;
+  background-color: #27cbff;
+  background-repeat:no-repeat;
+  text-align: center;
+  font-size: 24px;
+  color:#fff;
+}
+#uic-ship-cargo-bar {
+  display: flex;
+  box-sizing: border-box;
+  line-height: 5px;
+  background-color: #ff7c27;
+  text-align: center;
+  color:#fff;
+}
+#uic-ship-energy-bar {
+  display: flex;
+  line-height: 22px;
+  background-color: #e4bd20;
+  background-repeat:no-repeat;
+  text-align: center;
+  font-size: 24px;
+  color:#fff;
+}
+.uic-bar-undertext {
+  color: #fff;
+  font-size: 10px;
+  margin-top: 1px;
+  font-family: Arial;
+  letter-spacing: 0.7px;
+  font-weight: bold;
+  
+}
+
+/* .hover-invis {
+  opacity: 0;
+}
+.hover-invis:hover {
+  opacity: 1;
+} */
+.uic-align-left {
+  justify-content: left;
+  text-align: left;
+  align-items: flex-start;
+}
+.uic-align-right {
+  justify-content: right;
+  text-align: right;
+  align-items: end;
+}
+.uic-bar-undertext-left {
+  margin-left: 5px;   
 }
 
 .window-header {
   background-color: #333;
-  padding: 5px;
+  padding: 5px 10px;
   cursor: move;
   display: flex;
+  height: 20px;
   justify-content: space-between;
   align-items: center;
 }
 
 .window-content {
   flex-grow: 1;
-  padding: 10px;
 }
 
 .minimize-button {
@@ -90,4 +214,7 @@ html {
 .window,
 .minimized-icon {
   z-index: 10;
+}
+.draggable-ui-window > .window-header > img {
+  height: 90%;
 }

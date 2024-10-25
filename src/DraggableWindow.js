@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-function DraggableWindow({ id, title, position, minimizeWindow, updateWindowPosition, children }) {
+function DraggableWindow({ id, title, winWidth, winHeight, icon, position, minimizeWindow, updateWindowPosition, children }) {
   const [pos, setPos] = useState(position);
   const dragOffset = useRef({ x: 0, y: 0 });
 
@@ -44,24 +44,16 @@ function DraggableWindow({ id, title, position, minimizeWindow, updateWindowPosi
   return (
     <div>
       <div
-        className="draggable-ui-window"
-        style={{ left: pos.x, top: pos.y, position: 'absolute' }}
+        className="ui-container"
+        style={{ left: pos.x, top: pos.y, position: 'absolute', width: winWidth, height: winHeight }}
       >
-        <div
-          className="window-header"
-          onMouseDown={onMouseDown}
-        >
-          {title}
-          <button
-            className="minimize-button"
-            onClick={(e) => {
+        <div className="ui-container-header" onMouseDown={onMouseDown}>
+                <img className="uic-header-icon" src={process.env.PUBLIC_URL + '/images/icons/' + icon + '.png'} alt="" onClick={(e) => {
               e.stopPropagation();
               minimizeWindow(id);
-            }}
-          >
-            _
-          </button>
-        </div>
+            }}/>
+                <div className="uic-header-title">{title}</div>
+            </div>
         <div
           className="window-content"
           onMouseDown={stopPropagation}

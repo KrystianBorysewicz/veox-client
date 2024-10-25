@@ -2,12 +2,14 @@
 import React, { useState } from 'react';
 import DraggableWindow from './DraggableWindow';
 import Minimap from './DraggableUIElements/Minimap';
-import UserInfo from './DraggableUIElements/UserInfo';
+import User from './DraggableUIElements/User';
+import Ship from './DraggableUIElements/Ship';
 
 function UILayer() {
   const initialWindows = [
-    { id: 1, title: 'UserInfo', minimized: false, position: { x: 300, y: 100 } },
-    { id: 2, title: 'Minimap', minimized: false, position: { x: 500, y: 100 } },
+    { id: 1, title: 'Ship', icon: 'ship', width: '250px', height: '110px', minimized: false, position: { x: 300, y: 20 } },
+    { id: 2, title: 'User', icon: 'user', width: '390px', height: '110px', minimized: false, position: { x: 600, y: 20 } },
+    { id: 3, title: 'Minimap', icon: 'minimap', width: '390px', height: '110px', minimized: false, position: { x: 900, y: 600 } },
   ];
 
   const [windows, setWindows] = useState(initialWindows);
@@ -32,14 +34,18 @@ function UILayer() {
       {windows.map(win => !win.minimized && (
         <DraggableWindow
           key={win.id}
+          winWidth={win.width}
+          winHeight={win.height}
           id={win.id}
+          icon={win.icon}
           title={win.title}
           position={win.position}
           minimizeWindow={minimizeWindow}
           updateWindowPosition={updateWindowPosition}
         >
           {win.title === 'Minimap' && <Minimap />}
-          {win.title === 'UserInfo' && <UserInfo />}
+          {win.title === 'Ship' && <Ship />}
+          {win.title === 'User' && <User />}
         </DraggableWindow>
       ))}
       <div className="minimized-windows">
@@ -54,7 +60,7 @@ function UILayer() {
                 restoreWindow(id);
               }}
             >
-              {win.title[0]}
+              <img a='' src={process.env.PUBLIC_URL + '/images/icons/' + win.icon + '.png'}></img>
             </div>
           );
         })}

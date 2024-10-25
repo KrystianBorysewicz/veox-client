@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UserInfo() {
+function User() {
   return (
     <div>
       {/* Minimap content goes here */}
@@ -9,4 +9,4 @@ function UserInfo() {
   );
 }
 
-export default UserInfo;
+export default User;

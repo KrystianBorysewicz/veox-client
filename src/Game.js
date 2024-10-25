@@ -40,13 +40,25 @@ const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('/draco/'); // Adjust the path as needed
 loader.setDRACOLoader(dracoLoader);
 
-loader.load(`${process.env.PUBLIC_URL}/spaceship.gltf`, (gltf) => {
+loader.load(`./spaceship.gltf`, (gltf) => {
     spaceship = new THREE.Group(); // Parent group for the spaceship
     const model = gltf.scene;
     model.rotation.y = Math.PI; // Apply 180-degree rotation to the model
     spaceship.add(model);
     scene.add(spaceship);
     spaceship.position.set(0, 0, 0);
+
+    // Create the username div for the main spaceship
+    const clanTag = '[DEV]';
+    const username = 'Omni';
+    const usernameDiv = document.createElement('div');
+    usernameDiv.className = 'username own-username';
+    usernameDiv.innerHTML = `<span>${clanTag}</span> ${username}`; // Add the clan tag and username
+    document.body.appendChild(usernameDiv);
+
+    // Store the usernameDiv in the spaceship's userData for easy access
+    spaceship.userData.usernameDiv = usernameDiv;
+
     addRandomShips(12); // Add 5 random ships to the scene
 });
 
@@ -406,7 +418,7 @@ function checkShipSelection(event) {
 // Function to add random ships to the scene
 function addRandomShips(numShips) {
     for (let i = 0; i < numShips; i++) {
-        loader.load(`${process.env.PUBLIC_URL}/spaceship.gltf`, (gltf) => {
+        loader.load(`./spaceship.gltf`, (gltf) => {
             const otherShipGroup = new THREE.Group(); // Parent group for the other ship
             const otherShipModel = gltf.scene;
             otherShipModel.rotation.y = Math.PI; // Rotate 180 degrees
@@ -490,6 +502,19 @@ function updateUsernames() {
     const spaceshipWorldPosition = new THREE.Vector3();
     spaceship.getWorldPosition(spaceshipWorldPosition); // Get your ship's world position
 
+    // Update the main spaceship's username
+    const mainUsernameDiv = spaceship.userData.usernameDiv;
+    if (mainUsernameDiv) {
+        const position = spaceshipWorldPosition.clone();
+        position.project(camera);
+
+        const x = (position.x * 0.5 + 0.5) * window.innerWidth;
+        const y = (position.y * -0.5 + 0.5) * window.innerHeight;
+
+        mainUsernameDiv.style.transform = `translate(-50%, -50%) translate(${x}px, ${y + 40}px)`; // Offset below the ship
+        mainUsernameDiv.style.display = 'block';
+    }
+
     otherShips.forEach(ship => {
         const usernameDiv = ship.userData.usernameDiv;
 
@@ -516,6 +541,7 @@ function updateUsernames() {
         }
     });
 }
+
 
 // Update the camera position based on spherical coordinates
 function updateCameraPosition() {
