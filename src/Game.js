@@ -508,8 +508,11 @@ function updateUsernames() {
         const position = spaceshipWorldPosition.clone();
         position.project(camera);
 
-        const x = (position.x * 0.5 + 0.5) * window.innerWidth;
-        const y = (position.y * -0.5 + 0.5) * window.innerHeight;
+        // const x = (position.x * 0.5 + 0.5) * window.innerWidth;
+        // const y = (position.y * -0.5 + 0.5) * window.innerHeight;
+
+        const x = 0.5 * window.innerWidth;
+        const y = 0.5 * window.innerHeight;
 
         mainUsernameDiv.style.transform = `translate(-50%, -50%) translate(${x}px, ${y + 40}px)`; // Offset below the ship
         mainUsernameDiv.style.display = 'block';
